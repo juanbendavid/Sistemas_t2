@@ -54,11 +54,13 @@ public class ClienteUDP {
             }catch(Exception e1) {
             	
             }
-            
+
             System.out.print("Ingrese el nombre: ");
             String nombre = inFromUser.readLine();
             System.out.print("Ingrese el apellido: ");
             String apellido = inFromUser.readLine();
+            System.out.print("Ingrese el timeout: ");
+            int timeout = inFromUser.read();
             
             Persona p = new Persona(cedula, nombre, apellido);
             
@@ -77,7 +79,7 @@ public class ClienteUDP {
             System.out.println("Esperamos si viene la respuesta.");
 
             //Vamos a hacer una llamada BLOQUEANTE entonces establecemos un timeout maximo de espera
-            clientSocket.setSoTimeout(10000);
+            clientSocket.setSoTimeout(timeout);
 
             try {
                 // ESPERAMOS LA RESPUESTA, BLOQUENTE
