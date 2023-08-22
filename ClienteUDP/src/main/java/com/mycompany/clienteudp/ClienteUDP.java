@@ -16,6 +16,8 @@ import java.net.UnknownHostException;
 import py.una.entidad.Persona;
 import py.una.entidad.PersonaJSON;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Juan David
@@ -26,6 +28,7 @@ public class ClienteUDP {
 
         // Datos necesario
         String direccionServidor = "127.0.0.1";
+        Scanner sc = new Scanner(System.in);
 
         if (a.length > 0) {
             direccionServidor = a[0];
@@ -59,6 +62,8 @@ public class ClienteUDP {
             String nombre = inFromUser.readLine();
             System.out.print("Ingrese el apellido: ");
             String apellido = inFromUser.readLine();
+            System.out.print("Ingrese el timeout: ");
+            int timeout = sc.nextInt();
             
             Persona p = new Persona(cedula, nombre, apellido);
             
@@ -77,7 +82,7 @@ public class ClienteUDP {
             System.out.println("Esperamos si viene la respuesta.");
 
             //Vamos a hacer una llamada BLOQUEANTE entonces establecemos un timeout maximo de espera
-            clientSocket.setSoTimeout(10000);
+            clientSocket.setSoTimeout(timeout);
 
             try {
                 // ESPERAMOS LA RESPUESTA, BLOQUENTE
