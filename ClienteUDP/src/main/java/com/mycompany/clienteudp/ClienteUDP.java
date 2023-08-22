@@ -57,13 +57,15 @@ public class ClienteUDP {
             }catch(Exception e1) {
             	
             }
-            
+
             System.out.print("Ingrese el nombre: ");
             String nombre = inFromUser.readLine();
             System.out.print("Ingrese el apellido: ");
             String apellido = inFromUser.readLine();
             System.out.print("Ingrese el timeout: ");
+
             int timeout = sc.nextInt();
+
             
             Persona p = new Persona(cedula, nombre, apellido);
             
